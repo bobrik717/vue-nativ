@@ -2,7 +2,16 @@
     <Page>
         <ActionBar title="Calculator" class="action-bar"/>
         <ScrollView>
-            <ActionButtons class="action-buttons"></ActionButtons>
+            <FlexboxLayout flexWrap="wrap" height="100%">
+                <StackLayout height="65%">
+                    <TextView editable="false">
+                        <FormattedString>
+                            <Span v-bind:text="msg" />
+                        </FormattedString>
+                    </TextView>
+                </StackLayout>
+                <ActionButtons height="35%" :on-button-tap="onButtonTap"></ActionButtons>
+            </FlexboxLayout>
         </ScrollView>
     </Page>
 </template>
@@ -13,12 +22,12 @@
         components: {ActionButtons},
         data() {
             return {
-                msg: 'Peace)))'
+                msg: '',
             }
         },
         methods: {
             onButtonTap(num) {
-                console.log(num);
+                this.msg += '' + num;
             },
         },
     }
@@ -28,10 +37,5 @@
     ActionBar {
         background-color: #53ba82;
         color: #ffffff;
-    }
-    .action-buttons {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
     }
 </style>
