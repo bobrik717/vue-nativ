@@ -30,5 +30,12 @@
 </script>
 
 <style scoped>
-
+    Button{
+        font-weight: bold;
+        color: white;
+        background-color: #53ba82;
+        border-radius: 1px;
+        border-width: 7px;
+        border-color: coral;
+    }
 </style>
