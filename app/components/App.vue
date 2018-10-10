@@ -3,14 +3,14 @@
         <ActionBar title="Calculator" class="action-bar"/>
         <ScrollView>
             <FlexboxLayout flexWrap="wrap" height="100%">
-                <StackLayout height="65%">
+                <StackLayout height="50%">
                     <TextView editable="false">
                         <FormattedString>
-                            <Span v-bind:text="msg" />
+                            <Span v-bind:text="viewStack()" />
                         </FormattedString>
                     </TextView>
                 </StackLayout>
-                <ActionButtons height="35%" :on-button-tap="onButtonTap"></ActionButtons>
+                <ActionButtons height="50%" :on-button-tap="onButtonTap"></ActionButtons>
             </FlexboxLayout>
         </ScrollView>
     </Page>
@@ -22,12 +22,19 @@
         components: {ActionButtons},
         data() {
             return {
-                msg: '',
+                stack: [],
             }
         },
         methods: {
             onButtonTap(num) {
-                this.msg += '' + num;
+                this.stack.push(num);
+            },
+            viewStack() {
+                let str = '';
+                for(let i in this.stack) {
+                    str += this.stack[i];
+                }
+                return str;
             },
         },
     }
